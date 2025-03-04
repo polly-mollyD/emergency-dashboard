@@ -44,8 +44,8 @@ Invoke-RestMethod -Uri "http://localhost:8080/api/incidents" `
 ```
 ## Web Interface
 Access the application through the following URLs:
-- [Main Website] (http://localhost:8080)
-- [Incident List Page] (http://localhost:8080/api/incidents)
+- [Main Website](http://localhost:8080)
+- [Incident List Page](http://localhost:8080/api/incidents)
 
 
 
