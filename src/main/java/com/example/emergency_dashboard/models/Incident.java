@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import org.locationtech.jts.geom.Point; // For PostGIS Geometry
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
 import java.time.LocalDateTime;
 
 
@@ -33,6 +35,12 @@ public class Incident {
 
     public Incident() {}
 
+    // constractor that accepts lattitude and longitude
+    public Incident(String incidentType, double latitude, double longitude, String severityLevel) {
+        this.incidentType = incidentType;
+        this.severityLevel = severityLevel;
+        this.location = new GeometryFactory().createPoint(new Coordinate(longitude, latitude));
+    }
 
 
     // Getters and Setters
@@ -52,4 +60,9 @@ public class Incident {
 
     public Point getLocation() { return location; }
     public void setLocation(Point location) { this.location = location; }
+
+    // alternative setter for the location
+    public void setLocation(double latitude, double longitude) {
+        this.location = new GeometryFactory().createPoint(new Coordinate(longitude, latitude));
+    }
 }
